@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>R语言学习笔记</title>
+    <url>/2020/02/13/R-learning/</url>
+    <content><![CDATA[<h3 id="杂记"><a href="#杂记" class="headerlink" title="杂记"></a>杂记</h3><ul>
+<li><p>形如library()/require()这样的函数，参数可以为非字符串（如“ggplot”可以写成ggplot）,<br>而在其他语言（如java/python等）看来是一个变量。因此，在默认情况下，调用require(x)<br>意味着require(‘x’)，而不是x这个变量代表的字符串值。通过查看require的源码可以发现，<br>它含有这样一个判断：</p>
+<figure class="highlight r"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> (package, lib.loc = <span class="literal">NULL</span>, quietly = <span class="literal">FALSE</span>, warn.conflicts = <span class="literal">TRUE</span>,</span><br><span class="line">  character.only = <span class="literal">FALSE</span>)</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">if</span> (!character.only)</span><br><span class="line">    package &lt;- as.character(substitute(package))</span><br><span class="line">  <span class="keyword">...</span></span><br></pre></td></tr></table></figure>
+<p>如果character.only为False(默认情况)，他就会把package字符串化，而不是一个变量。<br>而如果我们设置character.only为True，package就可以作为变量引用。<br>此过程中的关键在于，函数为<code>substitute()</code>：可以返回变量的名字（“name”类型），替换变量所绑定的值。<br>与其相反的函数<code>get()</code>可以获取字符串所代表的变量。</p>
+<figure class="highlight r"><table><tr><td class="code"><pre><span class="line"><span class="comment">## EXAMPLE:</span></span><br><span class="line">&gt; x=<span class="string">"ab"</span></span><br><span class="line">&gt; y=substitute(x)</span><br><span class="line">&gt; mode(x)</span><br><span class="line">[<span class="number">1</span>] <span class="string">"character"</span></span><br><span class="line">&gt; x</span><br><span class="line">[<span class="number">1</span>] <span class="string">"ab"</span></span><br><span class="line">&gt; mode(y)</span><br><span class="line">[<span class="number">1</span>] <span class="string">"name"</span></span><br><span class="line">&gt; y</span><br><span class="line">x</span><br><span class="line">&gt; as.character(y)</span><br><span class="line">[<span class="number">1</span>] <span class="string">"x"</span></span><br></pre></td></tr></table></figure>
+<p><code>library()</code> 和 <code>require()</code> 的区别：如果一个包不存在，执行到library将会停止执行，<br>require则会继续执行，并且返回是否加载成功的Boolean类型值。因此，<code>require()</code><br>可以通过判断是否加载成功包来执行响应操作，如安装包。</p>
+<figure class="highlight r"><table><tr><td class="code"><pre><span class="line"><span class="comment">## EXAMPLE:</span></span><br><span class="line"><span class="keyword">if</span>(!<span class="keyword">require</span>(<span class="string">'ggplot2'</span>))&#123;</span><br><span class="line">    install.pacakge(<span class="string">'ggplot2'</span>)</span><br><span class="line">    <span class="keyword">library</span>(<span class="string">'ggplot2'</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>read.table()</code> 踩坑笔记：最近在读一个基因文件时，设置<code>header=TRUE</code>,<br>但发现都进来的基因名称发生了变化，如<code>HLA-E</code>，变成了<code>HLA.E</code>，后来查看了函数文档才发现，<br>有一个参数<code>check.names</code>,默认为<code>TRUE</code>,而指定为<code>FALSE</code>之后，就不会改变原来的名称了。</p>
+</li>
+<li><p>R中的稀疏矩阵<br>数据类型dgCMatrix (Matrix包)，构造sparseMatrix()。dgCMatrix的数据组成：</p>
+<ul>
+<li><code>i(or j)</code>: 表示非零数据向量的行号（0 based）</li>
+<li><code>p</code>: 非零向量按照列的顺序排列，p表示每列非零元素的起始指针下标（0 based）;</li>
+<li><code>x</code>: 按上述方式排列的向量</li>
+<li>官方说明：<a href="https://www.rdocumentation.org/packages/Matrix/versions/1.2-18/topics/sparseMatrix" target="_blank" rel="noopener">https://www.rdocumentation.org/packages/Matrix/versions/1.2-18/topics/sparseMatrix</a></li>
+<li>参考：类似于Python scipy中的CSR稀疏矩阵：<a href="https://blog.csdn.net/bitcarmanlee/article/details/52668477" target="_blank" rel="noopener">https://blog.csdn.net/bitcarmanlee/article/details/52668477</a></li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Learning</category>
+      </categories>
+      <tags>
+        <tag>R</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python学习笔记</title>
+    <url>/2020/02/13/Python-learning/</url>
+    <content><![CDATA[<h2 id="Python并行编程"><a href="#Python并行编程" class="headerlink" title="Python并行编程"></a>Python并行编程</h2><h3 id="线程和进程"><a href="#线程和进程" class="headerlink" title="线程和进程"></a>线程和进程</h3><p>进程是指独立的任务实例，线程是进程中控制流程。</p>
+<p>进程是应用程序的一个执行实例，比如，在桌面上双击浏览器图标将会运行一个浏览器。线程是一个控制流程，可以在进程内与其他活跃的线程同时执行。“控制流程”指的是顺序执行一些机器指令。进程可以包含多个线程，所以开启一个浏览器，操作系统将创建一个进程，并开始执行这个进程的主线程。每一个线程将独立执行一系列的指令（通常就是一个函数），并且和其他线程并行执行。然而，同一个进程内的线程可以共享一些地址空间和数据结构。线程也被称作“轻量进程”，因为它和进程有许多共同点，比如都是可以和其他控制流程同时运行的控制流程，说它“轻量”是因为实现一个进程比线程要繁重的多。重申一遍，不同于进程，多个线程可以共享很多资源，特别是地址空间和数据结构等。</p>
+<h4 id="总结一下："><a href="#总结一下：" class="headerlink" title="总结一下："></a>总结一下：</h4><ul>
+<li>进程可以包含多个并行运行的线程。</li>
+<li>通常，操作系统创建和管理线程比进程更能节省CPU的资源。线程用于一些小任务，进程用于繁重的任务——运行应用程序。<br>同一个进程下的线程共享地址空间和其他资源，进程之间相互独立。</li>
+</ul>
+<p><strong>Ref</strong>: <a href="https://python-parallel-programmning-cookbook.readthedocs.io/zh_CN/latest/index.html" target="_blank" rel="noopener">https://python-parallel-programmning-cookbook.readthedocs.io/zh_CN/latest/index.html</a></p>
+<h2 id="Python项目开发笔记"><a href="#Python项目开发笔记" class="headerlink" title="Python项目开发笔记"></a>Python项目开发笔记</h2><h3 id="项目规划问题"><a href="#项目规划问题" class="headerlink" title="项目规划问题"></a>项目规划问题</h3><p>Python项目中内部模块引用对于新手来讲是一件令人头疼的事情，基于python模块引入的机制，<br>提出python项目开发中项目内部模块引用的规范。</p>
+<h4 id="模块引入机制"><a href="#模块引入机制" class="headerlink" title="模块引入机制"></a>模块引入机制</h4><p>Python中的模块引入完全依靠<code>sys.path</code>来搜索，使用相对路径会很依赖于当前位置；<br>使用绝对路径使项目移植变得繁琐。<br>因此，下面提出基于相对路径的引用规范，是项目移植变得简单方便。</p>
+<h4 id="规范"><a href="#规范" class="headerlink" title="规范"></a>规范</h4><ol>
+<li>以项目名(以<code>hpc</code>为例)为根，在各个需要引用的模块中均使用<code>项目名.模块位置</code>来进行定位，<br>如<code>hpc.util.network</code>。</li>
+<li>基于1的规范，提出实现调用项目中任意模块中对象的方法。在根目录下创建<code>__main__.py</code>，<br>在该程序中引入要调用的模块，并执行。然后就可以在系统中，通过<code>python -m hpc</code>来执行该程序。<br><code>python -m hpc</code>的意思为在<code>sys.path</code>中搜索包hpc来执行。<br>因此，若没有在系统中添加hpc项目父路径到<code>sys.path</code>，则需要切换到hpc所在父目录，执行。<br>（因为<code>sys.path</code>含有当前目录）。</li>
+<li>在Pycharm中，默认会把项目根加入<code>sys.path</code>，所以导致使用<code>hpc.util.network</code>会提示书写错误，<br>我们可以在项目根目录上再加一层目录即可解决问题。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Learning</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+</search>
