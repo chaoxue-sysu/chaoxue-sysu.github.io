@@ -1,6 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Writing In Science</title>
+    <url>/2020/03/30/scientific-writing/</url>
+    <content><![CDATA[<h2 id="斯坦福大学医学院科学写作课程笔记"><a href="#斯坦福大学医学院科学写作课程笔记" class="headerlink" title="斯坦福大学医学院科学写作课程笔记"></a>斯坦福大学医学院科学写作课程笔记</h2><h3 id="1-引言"><a href="#1-引言" class="headerlink" title="1. 引言"></a>1. 引言</h3><h4 id="1-1-好文章的标准"><a href="#1-1-好文章的标准" class="headerlink" title="1.1 好文章的标准"></a>1.1 好文章的标准</h4><p>基础层次（初稿阶段）：清楚、有效（clearly, effectively）<br>提升层次（修改阶段）：优雅、时尚（elegant, stylish）</p>
+<h4 id="1-2-如何写好文章"><a href="#1-2-如何写好文章" class="headerlink" title="1.2 如何写好文章"></a>1.2 如何写好文章</h4><p>整体上：</p>
+<ul>
+<li>明确要表达的想法</li>
+<li>阐述要有逻辑性</li>
+<li>有一定的写作规则<h4 id="1-3-如何修炼"><a href="#1-3-如何修炼" class="headerlink" title="1.3 如何修炼"></a>1.3 如何修炼</h4></li>
+<li>专注读好的文章，并试着模仿</li>
+<li>尝试写日记，作为写作实践的一种方式</li>
+<li>破除固有的写作习惯</li>
+<li>在写文章前先尝试去给别人讲</li>
+<li>试着让读者感兴趣</li>
+<li>不要等到所谓的灵感，那只是拖延</li>
+<li>认知上接受写作并不容易</li>
+<li>修改！花大时间修改</li>
+<li>大胆删减无用的词句！</li>
+<li>让别人（最好是外行）来给你做编辑</li>
+<li>大胆尝试用有趣的手法写作</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Learning</category>
+      </categories>
+      <tags>
+        <tag>Writing</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>R语言学习笔记</title>
     <url>/2020/02/13/R-learning/</url>
     <content><![CDATA[<h3 id="杂记"><a href="#杂记" class="headerlink" title="杂记"></a>杂记</h3><ul>
@@ -23,7 +52,7 @@
 </ul>
 </li>
 </ul>
-]]></content>
+<h3 id="R面向对象编程"><a href="#R面向对象编程" class="headerlink" title="R面向对象编程"></a>R面向对象编程</h3>]]></content>
       <categories>
         <category>Learning</category>
       </categories>
