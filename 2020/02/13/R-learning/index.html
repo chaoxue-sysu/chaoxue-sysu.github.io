@@ -79,14 +79,14 @@
 
 
 
-<meta name="description" content="杂记 形如library()&#x2F;require()这样的函数，参数可以为非字符串（如“ggplot”可以写成ggplot）,而在其他语言（如java&#x2F;python等）看来是一个变量。因此，在默认情况下，调用require(x)意味着require(‘x’)，而不是x这个变量代表的字符串值。通过查看require的源码可以发现，它含有这样一个判断： 123456function (package, l">
+<meta name="description" content="杂记 substitute()和get()函数形如library()&#x2F;require()这样的函数，参数可以为非字符串（如“ggplot”可以写成ggplot）,而在其他语言（如java&#x2F;python等）看来是一个变量。因此，在默认情况下，调用require(x)意味着require(‘x’)，而不是x这个变量代表的字符串值。通过查看require的源码可以发现，它含有这样一个判断：123456f">
 <meta property="og:type" content="article">
 <meta property="og:title" content="R语言学习笔记">
 <meta property="og:url" content="https://gblog.snplife.com/2020/02/13/R-learning/index.html">
 <meta property="og:site_name" content="我有点疼啊">
-<meta property="og:description" content="杂记 形如library()&#x2F;require()这样的函数，参数可以为非字符串（如“ggplot”可以写成ggplot）,而在其他语言（如java&#x2F;python等）看来是一个变量。因此，在默认情况下，调用require(x)意味着require(‘x’)，而不是x这个变量代表的字符串值。通过查看require的源码可以发现，它含有这样一个判断： 123456function (package, l">
+<meta property="og:description" content="杂记 substitute()和get()函数形如library()&#x2F;require()这样的函数，参数可以为非字符串（如“ggplot”可以写成ggplot）,而在其他语言（如java&#x2F;python等）看来是一个变量。因此，在默认情况下，调用require(x)意味着require(‘x’)，而不是x这个变量代表的字符串值。通过查看require的源码可以发现，它含有这样一个判断：123456f">
 <meta property="article:published_time" content="2020-02-13T02:56:21.000Z">
-<meta property="article:modified_time" content="2020-03-21T01:00:39.916Z">
+<meta property="article:modified_time" content="2020-04-02T13:01:16.587Z">
 <meta property="article:author" content="Chao Xue">
 <meta property="article:tag" content="R">
 <meta name="twitter:card" content="summary">
@@ -341,8 +341,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-21T09:00:39+08:00">
-                2020-03-21
+              <time title="更新于" itemprop="dateModified" datetime="2020-04-02T21:01:16+08:00">
+                2020-04-02
               </time>
             
 			</span>
@@ -408,22 +408,22 @@
 
       
         <h3 id="杂记"><a href="#杂记" class="headerlink" title="杂记"></a>杂记</h3><ul>
-<li><p>形如library()/require()这样的函数，参数可以为非字符串（如“ggplot”可以写成ggplot）,<br>而在其他语言（如java/python等）看来是一个变量。因此，在默认情况下，调用require(x)<br>意味着require(‘x’)，而不是x这个变量代表的字符串值。通过查看require的源码可以发现，<br>它含有这样一个判断：</p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> (package, lib.loc = <span class="literal">NULL</span>, quietly = <span class="literal">FALSE</span>, warn.conflicts = <span class="literal">TRUE</span>,</span><br><span class="line">  character.only = <span class="literal">FALSE</span>)</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">if</span> (!character.only)</span><br><span class="line">    package &lt;- as.character(substitute(package))</span><br><span class="line">  <span class="keyword">...</span></span><br></pre></td></tr></table></figure>
-<p>如果character.only为False(默认情况)，他就会把package字符串化，而不是一个变量。<br>而如果我们设置character.only为True，package就可以作为变量引用。<br>此过程中的关键在于，函数为<code>substitute()</code>：可以返回变量的名字（“name”类型），替换变量所绑定的值。<br>与其相反的函数<code>get()</code>可以获取字符串所代表的变量。</p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## EXAMPLE:</span></span><br><span class="line">&gt; x=<span class="string">"ab"</span></span><br><span class="line">&gt; y=substitute(x)</span><br><span class="line">&gt; mode(x)</span><br><span class="line">[<span class="number">1</span>] <span class="string">"character"</span></span><br><span class="line">&gt; x</span><br><span class="line">[<span class="number">1</span>] <span class="string">"ab"</span></span><br><span class="line">&gt; mode(y)</span><br><span class="line">[<span class="number">1</span>] <span class="string">"name"</span></span><br><span class="line">&gt; y</span><br><span class="line">x</span><br><span class="line">&gt; as.character(y)</span><br><span class="line">[<span class="number">1</span>] <span class="string">"x"</span></span><br></pre></td></tr></table></figure>
+<li><code>substitute()</code>和<code>get()</code>函数<br>形如library()/require()这样的函数，参数可以为非字符串（如“ggplot”可以写成ggplot）,<br>而在其他语言（如java/python等）看来是一个变量。因此，在默认情况下，调用require(x)<br>意味着require(‘x’)，而不是x这个变量代表的字符串值。通过查看require的源码可以发现，<br>它含有这样一个判断：<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> (package, lib.loc = <span class="literal">NULL</span>, quietly = <span class="literal">FALSE</span>, warn.conflicts = <span class="literal">TRUE</span>,</span><br><span class="line">  character.only = <span class="literal">FALSE</span>)</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">if</span> (!character.only)</span><br><span class="line">    package &lt;- as.character(substitute(package))</span><br><span class="line">  <span class="keyword">...</span></span><br></pre></td></tr></table></figure>
+如果character.only为False(默认情况)，他就会把package字符串化，而不是一个变量。<br>而如果我们设置character.only为True，package就可以作为变量引用。<br>此过程中的关键在于，函数为<code>substitute()</code>：可以返回变量的名字（“name”类型），替换变量所绑定的值。<br>与其相反的函数<code>get()</code>可以获取字符串所代表的变量。<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## EXAMPLE:</span></span><br><span class="line">&gt; x=<span class="string">"ab"</span></span><br><span class="line">&gt; y=substitute(x)</span><br><span class="line">&gt; mode(x)</span><br><span class="line">[<span class="number">1</span>] <span class="string">"character"</span></span><br><span class="line">&gt; x</span><br><span class="line">[<span class="number">1</span>] <span class="string">"ab"</span></span><br><span class="line">&gt; mode(y)</span><br><span class="line">[<span class="number">1</span>] <span class="string">"name"</span></span><br><span class="line">&gt; y</span><br><span class="line">x</span><br><span class="line">&gt; as.character(y)</span><br><span class="line">[<span class="number">1</span>] <span class="string">"x"</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
 <p><code>library()</code> 和 <code>require()</code> 的区别：如果一个包不存在，执行到library将会停止执行，<br>require则会继续执行，并且返回是否加载成功的Boolean类型值。因此，<code>require()</code><br>可以通过判断是否加载成功包来执行响应操作，如安装包。</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## EXAMPLE:</span></span><br><span class="line"><span class="keyword">if</span>(!<span class="keyword">require</span>(<span class="string">'ggplot2'</span>))&#123;</span><br><span class="line">    install.pacakge(<span class="string">'ggplot2'</span>)</span><br><span class="line">    <span class="keyword">library</span>(<span class="string">'ggplot2'</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><code>read.table()</code> 踩坑笔记：最近在读一个基因文件时，设置<code>header=TRUE</code>,<br>但发现都进来的基因名称发生了变化，如<code>HLA-E</code>，变成了<code>HLA.E</code>，后来查看了函数文档才发现，<br>有一个参数<code>check.names</code>,默认为<code>TRUE</code>,而指定为<code>FALSE</code>之后，就不会改变原来的名称了。</p>
+
+<ul>
+<li><p><code>read.table()</code> 踩坑笔记<br>最近在读一个基因文件时，设置<code>header=TRUE</code>，但发现都进来的基因名称发生了变化，如<code>HLA-E</code>，变成了<code>HLA.E</code>，后来查看了函数文档才发现，<br>有一个参数<code>check.names</code>,默认为<code>TRUE</code>,而指定为<code>FALSE</code>之后，就不会改变原来的名称了。</p>
 </li>
 <li><p>R中的稀疏矩阵<br>数据类型dgCMatrix (Matrix包)，构造sparseMatrix()。dgCMatrix的数据组成：</p>
 <ul>
 <li><code>i(or j)</code>: 表示非零数据向量的行号（0 based）</li>
 <li><code>p</code>: 非零向量按照列的顺序排列，p表示每列非零元素的起始指针下标（0 based）;</li>
-<li><code>x</code>: 按上述方式排列的向量</li>
-<li>官方说明：<a href="https://www.rdocumentation.org/packages/Matrix/versions/1.2-18/topics/sparseMatrix" target="_blank" rel="noopener">https://www.rdocumentation.org/packages/Matrix/versions/1.2-18/topics/sparseMatrix</a></li>
-<li>参考：类似于Python scipy中的CSR稀疏矩阵：<a href="https://blog.csdn.net/bitcarmanlee/article/details/52668477" target="_blank" rel="noopener">https://blog.csdn.net/bitcarmanlee/article/details/52668477</a></li>
+<li><code>x</code>: 按上述方式排列的向量<br>官方说明：<a href="https://www.rdocumentation.org/packages/Matrix/versions/1.2-18/topics/sparseMatrix" target="_blank" rel="noopener">https://www.rdocumentation.org/packages/Matrix/versions/1.2-18/topics/sparseMatrix</a><br>参考：类似于Python scipy中的CSR稀疏矩阵：<a href="https://blog.csdn.net/bitcarmanlee/article/details/52668477" target="_blank" rel="noopener">https://blog.csdn.net/bitcarmanlee/article/details/52668477</a></li>
 </ul>
 </li>
 </ul>
