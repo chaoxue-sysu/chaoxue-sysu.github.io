@@ -129,12 +129,64 @@
 </ul>
 </li>
 </ul>
+<h1 id="写作过程"><a href="#写作过程" class="headerlink" title="写作过程"></a>写作过程</h1><p>将写作过程分为三大步骤：准备、初稿、修改，可以提高写作效率。</p>
+<ul>
+<li>Prewriting （投入70%工作量）<ul>
+<li>收集、整理、组织要用到的所有信息，包括细节</li>
+<li>列出提纲</li>
+</ul>
+</li>
+<li>First writing （投入10%工作量）<ul>
+<li>将想法和事实按照逻辑写成有序的文章</li>
+</ul>
+</li>
+<li>Revision （投入20%工作量）<ul>
+<li>按照学到的写作规则进行修改</li>
+<li>找其他人修改反馈</li>
+</ul>
+</li>
+</ul>
+<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><ul>
+<li>收集文章可能用到的所有材料信息，包括结果数据，引用，想法等一切细节。</li>
+<li>有条理的将这些信息组织起来，保证能够在需要的时候及时获取；可以先设计一个这样的通用系统。</li>
+<li>设计提纲：理顺文章整体的逻辑和主要模块。</li>
+<li>头脑风暴：在头脑放松的时间去思考如何组织文章，如何表述想法，可能会得到意外的收获。</li>
+<li>主题集中，不要分散（not Bait-and Switch）。<h2 id="初稿"><a href="#初稿" class="headerlink" title="初稿"></a>初稿</h2></li>
+<li>不要做一个完美主义者：不要想着一次成型。</li>
+<li>初稿阶段仅仅是将主旨想法和结果按照一定的逻辑和正确的次序写下来，不要去抠句子的细节。</li>
+<li>这样可以快速完成初稿写作，提高写作效率。</li>
+</ul>
 ]]></content>
       <categories>
         <category>Learning</category>
       </categories>
       <tags>
         <tag>Writing</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python学习笔记</title>
+    <url>/2020/02/13/Python-learning/</url>
+    <content><![CDATA[<h2 id="Python并行编程"><a href="#Python并行编程" class="headerlink" title="Python并行编程"></a>Python并行编程</h2><h3 id="线程和进程"><a href="#线程和进程" class="headerlink" title="线程和进程"></a>线程和进程</h3><p>进程是指独立的任务实例，线程是进程中控制流程。</p>
+<p>进程是应用程序的一个执行实例，比如，在桌面上双击浏览器图标将会运行一个浏览器。线程是一个控制流程，可以在进程内与其他活跃的线程同时执行。“控制流程”指的是顺序执行一些机器指令。进程可以包含多个线程，所以开启一个浏览器，操作系统将创建一个进程，并开始执行这个进程的主线程。每一个线程将独立执行一系列的指令（通常就是一个函数），并且和其他线程并行执行。然而，同一个进程内的线程可以共享一些地址空间和数据结构。线程也被称作“轻量进程”，因为它和进程有许多共同点，比如都是可以和其他控制流程同时运行的控制流程，说它“轻量”是因为实现一个进程比线程要繁重的多。重申一遍，不同于进程，多个线程可以共享很多资源，特别是地址空间和数据结构等。</p>
+<h4 id="总结一下："><a href="#总结一下：" class="headerlink" title="总结一下："></a>总结一下：</h4><ul>
+<li>进程可以包含多个并行运行的线程。</li>
+<li>通常，操作系统创建和管理线程比进程更能节省CPU的资源。线程用于一些小任务，进程用于繁重的任务——运行应用程序。<br>同一个进程下的线程共享地址空间和其他资源，进程之间相互独立。</li>
+</ul>
+<p><strong>Ref</strong>: <a href="https://python-parallel-programmning-cookbook.readthedocs.io/zh_CN/latest/index.html" target="_blank" rel="noopener">https://python-parallel-programmning-cookbook.readthedocs.io/zh_CN/latest/index.html</a></p>
+<h2 id="Python项目开发笔记"><a href="#Python项目开发笔记" class="headerlink" title="Python项目开发笔记"></a>Python项目开发笔记</h2><h3 id="项目规划问题"><a href="#项目规划问题" class="headerlink" title="项目规划问题"></a>项目规划问题</h3><p>Python项目中内部模块引用对于新手来讲是一件令人头疼的事情，基于python模块引入的机制，<br>提出python项目开发中项目内部模块引用的规范。</p>
+<h4 id="模块引入机制"><a href="#模块引入机制" class="headerlink" title="模块引入机制"></a>模块引入机制</h4><p>Python中的模块引入完全依靠<code>sys.path</code>来搜索，使用相对路径会很依赖于当前位置；<br>使用绝对路径使项目移植变得繁琐。<br>因此，下面提出基于相对路径的引用规范，是项目移植变得简单方便。</p>
+<h4 id="规范"><a href="#规范" class="headerlink" title="规范"></a>规范</h4><ol>
+<li>以项目名(以<code>hpc</code>为例)为根，在各个需要引用的模块中均使用<code>项目名.模块位置</code>来进行定位，<br>如<code>hpc.util.network</code>。</li>
+<li>基于1的规范，提出实现调用项目中任意模块中对象的方法。在根目录下创建<code>__main__.py</code>，<br>在该程序中引入要调用的模块，并执行。然后就可以在系统中，通过<code>python -m hpc</code>来执行该程序。<br><code>python -m hpc</code>的意思为在<code>sys.path</code>中搜索包hpc来执行。<br>因此，若没有在系统中添加hpc项目父路径到<code>sys.path</code>，则需要切换到hpc所在父目录，执行。<br>（因为<code>sys.path</code>含有当前目录）。</li>
+<li>在Pycharm中，默认会把项目根加入<code>sys.path</code>，所以导致使用<code>hpc.util.network</code>会提示书写错误，<br>我们可以在项目根目录上再加一层目录即可解决问题。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Learning</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
       </tags>
   </entry>
   <entry>
@@ -166,31 +218,6 @@
       </categories>
       <tags>
         <tag>R</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Python学习笔记</title>
-    <url>/2020/02/13/Python-learning/</url>
-    <content><![CDATA[<h2 id="Python并行编程"><a href="#Python并行编程" class="headerlink" title="Python并行编程"></a>Python并行编程</h2><h3 id="线程和进程"><a href="#线程和进程" class="headerlink" title="线程和进程"></a>线程和进程</h3><p>进程是指独立的任务实例，线程是进程中控制流程。</p>
-<p>进程是应用程序的一个执行实例，比如，在桌面上双击浏览器图标将会运行一个浏览器。线程是一个控制流程，可以在进程内与其他活跃的线程同时执行。“控制流程”指的是顺序执行一些机器指令。进程可以包含多个线程，所以开启一个浏览器，操作系统将创建一个进程，并开始执行这个进程的主线程。每一个线程将独立执行一系列的指令（通常就是一个函数），并且和其他线程并行执行。然而，同一个进程内的线程可以共享一些地址空间和数据结构。线程也被称作“轻量进程”，因为它和进程有许多共同点，比如都是可以和其他控制流程同时运行的控制流程，说它“轻量”是因为实现一个进程比线程要繁重的多。重申一遍，不同于进程，多个线程可以共享很多资源，特别是地址空间和数据结构等。</p>
-<h4 id="总结一下："><a href="#总结一下：" class="headerlink" title="总结一下："></a>总结一下：</h4><ul>
-<li>进程可以包含多个并行运行的线程。</li>
-<li>通常，操作系统创建和管理线程比进程更能节省CPU的资源。线程用于一些小任务，进程用于繁重的任务——运行应用程序。<br>同一个进程下的线程共享地址空间和其他资源，进程之间相互独立。</li>
-</ul>
-<p><strong>Ref</strong>: <a href="https://python-parallel-programmning-cookbook.readthedocs.io/zh_CN/latest/index.html" target="_blank" rel="noopener">https://python-parallel-programmning-cookbook.readthedocs.io/zh_CN/latest/index.html</a></p>
-<h2 id="Python项目开发笔记"><a href="#Python项目开发笔记" class="headerlink" title="Python项目开发笔记"></a>Python项目开发笔记</h2><h3 id="项目规划问题"><a href="#项目规划问题" class="headerlink" title="项目规划问题"></a>项目规划问题</h3><p>Python项目中内部模块引用对于新手来讲是一件令人头疼的事情，基于python模块引入的机制，<br>提出python项目开发中项目内部模块引用的规范。</p>
-<h4 id="模块引入机制"><a href="#模块引入机制" class="headerlink" title="模块引入机制"></a>模块引入机制</h4><p>Python中的模块引入完全依靠<code>sys.path</code>来搜索，使用相对路径会很依赖于当前位置；<br>使用绝对路径使项目移植变得繁琐。<br>因此，下面提出基于相对路径的引用规范，是项目移植变得简单方便。</p>
-<h4 id="规范"><a href="#规范" class="headerlink" title="规范"></a>规范</h4><ol>
-<li>以项目名(以<code>hpc</code>为例)为根，在各个需要引用的模块中均使用<code>项目名.模块位置</code>来进行定位，<br>如<code>hpc.util.network</code>。</li>
-<li>基于1的规范，提出实现调用项目中任意模块中对象的方法。在根目录下创建<code>__main__.py</code>，<br>在该程序中引入要调用的模块，并执行。然后就可以在系统中，通过<code>python -m hpc</code>来执行该程序。<br><code>python -m hpc</code>的意思为在<code>sys.path</code>中搜索包hpc来执行。<br>因此，若没有在系统中添加hpc项目父路径到<code>sys.path</code>，则需要切换到hpc所在父目录，执行。<br>（因为<code>sys.path</code>含有当前目录）。</li>
-<li>在Pycharm中，默认会把项目根加入<code>sys.path</code>，所以导致使用<code>hpc.util.network</code>会提示书写错误，<br>我们可以在项目根目录上再加一层目录即可解决问题。</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Learning</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
       </tags>
   </entry>
 </search>
