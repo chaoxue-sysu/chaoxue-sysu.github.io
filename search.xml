@@ -190,6 +190,32 @@
 </ul>
 </li>
 </ul>
+<h1 id="科学手稿写作"><a href="#科学手稿写作" class="headerlink" title="科学手稿写作"></a>科学手稿写作</h1><p>本节讨论科学手稿写作的具体过程。从头开始写论文是一件困难的事情，将写作任务分解成可行的小任务是不错的选择。<br>论文推荐写作顺序：</p>
+<ol>
+<li>Tables and figures: 图表是论文的核心，也是审稿人/读者重点关注的地方。</li>
+<li>Results：结果部分就是读图表的阐述。</li>
+<li>Methods</li>
+<li>Introduction</li>
+<li>Discussion：讨论对论文的总结，是最复杂的部分，放在后面完成。</li>
+<li>Abstract：全文写作完成后，更好的把握摘要写作。</li>
+</ol>
+<h2 id="Tables-and-figures"><a href="#Tables-and-figures" class="headerlink" title="Tables and figures"></a>Tables and figures</h2><p>图表是论文的基础，应该能够独立向读者展示整篇论文的故事。要注意图表中不能出现重复数据，用尽量少的图表展示结果。图一般展示数据的趋势和模式，给人以直观的视觉冲击；而表格用于展示精确的数值，或者较为复杂的数据。</p>
+<h3 id="Tables"><a href="#Tables" class="headerlink" title="Tables"></a>Tables</h3><ul>
+<li>表格标题：要中心明确、简明扼要。</li>
+<li>脚注：规范</li>
+<li>形式：三线表</li>
+</ul>
+<h2 id="Figures"><a href="#Figures" class="headerlink" title="Figures"></a>Figures</h2><h3 id="图的类型"><a href="#图的类型" class="headerlink" title="图的类型"></a>图的类型</h3><ol>
+<li>Primary evidence: 一手资料图，比如影像图（跑胶/荧光等）</li>
+<li>Grapths: 展示数据的图，比如Line/Bar/Scatter等。</li>
+<li>Drawing and diagrams: 展示模型或者流程之类的图。</li>
+</ol>
+<h3 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h3><ul>
+<li>图的标题和图注要能让读者完全明白图的意思，而不需要看原文。</li>
+<li>图要尽量简单，让读者容易看懂。</li>
+<li>如果图表展示的数据过于复杂，改用表格。</li>
+<li>除了图之外，在必要的情况下也可以使用视频。</li>
+</ul>
 ]]></content>
       <categories>
         <category>Learning</category>
