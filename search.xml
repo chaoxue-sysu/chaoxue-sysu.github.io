@@ -216,6 +216,39 @@
 <li>如果图表展示的数据过于复杂，改用表格。</li>
 <li>除了图之外，在必要的情况下也可以使用视频。</li>
 </ul>
+<h2 id="Results"><a href="#Results" class="headerlink" title="Results"></a>Results</h2><p>结果部分不只是对原始数据的简单重复，而应该总结图表中的数据，包括指出数据关系、整体趋势，引用图表中的数据进行说明。</p>
+<h3 id="Tips-1"><a href="#Tips-1" class="headerlink" title="Tips"></a>Tips</h3><ul>
+<li>结果分块陈述</li>
+<li>对原始数据的补充说明：比如，指出图中未出现的明确数值；指出表格中差异的百分比等。</li>
+<li>强调图表中出现的重点数值。</li>
+</ul>
+<h3 id="时态"><a href="#时态" class="headerlink" title="时态"></a><span id="results_tense">时态</span></h3><ul>
+<li>对于已完成的动作（包括实验、分析等）使用过去式<ul>
+<li>we found …</li>
+<li>we downloaded …</li>
+</ul>
+</li>
+<li>对于持续为真的断言使用现在式<ul>
+<li>figure/table shows …</li>
+<li>data suggest …</li>
+<li>the findings confirm …</li>
+<li>we believe that …</li>
+</ul>
+</li>
+</ul>
+<h3 id="语态"><a href="#语态" class="headerlink" title="语态"></a>语态</h3><p>结果部分应该使用主动语态。</p>
+<h2 id="Methods-and-Materials-Data"><a href="#Methods-and-Materials-Data" class="headerlink" title="Methods (and Materials/Data)"></a>Methods (and Materials/Data)</h2><h3 id="Tips-2"><a href="#Tips-2" class="headerlink" title="Tips"></a>Tips</h3><ul>
+<li>给出清晰的方法全览</li>
+<li>给出足够的信息，使得能够重复研究</li>
+<li>全面并且易读<ul>
+<li>分块陈述</li>
+<li>对于常用的方法不必详述，直接引用参考。</li>
+<li>必要时可以用流程图帮助描述方法</li>
+</ul>
+</li>
+</ul>
+<h3 id="时态-1"><a href="#时态-1" class="headerlink" title="时态"></a>时态</h3><p>和 <a href="#results_tense">结果部分时态</a> 一致。</p>
+<h3 id="语态-1"><a href="#语态-1" class="headerlink" title="语态"></a>语态</h3><p>方法部分可以更自由的使用主动或被动语态，缩写也可以自由使用。</p>
 ]]></content>
       <categories>
         <category>Learning</category>
