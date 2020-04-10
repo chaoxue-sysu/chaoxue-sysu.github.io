@@ -252,9 +252,40 @@
 <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>引言部分应该专注于文章特定的主题，不要泛谈。引言部分的写作要求是陈述清晰、文字简洁、逻辑流畅。<br>通常引言部分可以分三小段陈述。</p>
 <ol>
 <li><strong>what’s known</strong>: 阐述研究背景，即目前已知的研究结果。</li>
-<li><strong>what’s unknow (limitations/gaps)</strong>: 阐述目前研究的局限性。</li>
+<li><strong>what’s unknown (limitations/gaps)</strong>: 阐述目前研究的局限性。</li>
 <li><strong>your project</strong>: 阐述你的项目：<br> (1) 提出你要解决的问题/假设<br> (2) 提出解决问题的方法<br> (3) 强调你的创新/研究意义等</li>
 </ol>
+<h2 id="Discussion"><a href="#Discussion" class="headerlink" title="Discussion"></a>Discussion</h2><p>讨论是最自由也是最具有挑战性的部分，在此部分可以充分发挥你的文笔。<br>讨论部分一般可以按照以下几个模块展开：</p>
+<ol>
+<li><strong>key findings</strong>：首先阐述本研究解决了引言中提出的问题（we found that …）；然后在高层次水平解释实验数据如何支持结果，并阐述这些发现的创新性。</li>
+<li><strong>secondary findings</strong>: (optional).</li>
+<li><strong>context</strong>：对于一些不想在引言陈述的内容，可以在此讨论。比如：<ul>
+<li>对于研究的发现，给出可能的机制解释。</li>
+<li>和其他研究比较，讨论支持/反对别人的结果</li>
+</ul>
+</li>
+<li><strong>strength and limitations</strong>：预测读者可能的质疑并作出回应，解释研究的稳健性。</li>
+<li><strong>what’s the next</strong>：指出为解决的问题和未来的方向。</li>
+<li><strong>implicate/speculate/recommend</strong>：指出被研究的意义。</li>
+<li><strong>strong conclusion</strong>: 再次强调本研究的亮点。</li>
+</ol>
+<h3 id="Tips-3"><a href="#Tips-3" class="headerlink" title="Tips"></a>Tips</h3><ul>
+<li>充分发挥好文笔</li>
+<li>首尾强调研究亮点</li>
+<li>不要超出自己的研究结果进行讨论</li>
+<li>局限性讨论要具体，不要泛泛而谈</li>
+<li>确保亮点的表述清晰且一致</li>
+</ul>
+<h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p>摘要是对全文的预览，就是对文章其他部分内容的凝练。可以按照以下顺序展开：</p>
+<ol>
+<li>从背景引入主题</li>
+<li>提出问题/目标/假设</li>
+<li>实验内容</li>
+<li>结果（关键发现）</li>
+<li>结论（回答了什么问题）</li>
+<li>研究意义/建议</li>
+</ol>
+<p>每个部分用一两句话总结凝练，不要超过字数要求。</p>
 ]]></content>
       <categories>
         <category>Learning</category>
