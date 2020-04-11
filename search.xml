@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>斯坦福大学医学院科学写作课程笔记（持续更新）</title>
+    <title>斯坦福大学医学院科学写作课程笔记</title>
     <url>/2020/03/30/scientific-writing/</url>
     <content><![CDATA[<h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><h2 id="好文笔的标准"><a href="#好文笔的标准" class="headerlink" title="好文笔的标准"></a>好文笔的标准</h2><p>基础层次（初稿阶段）：清楚、有效（clearly, effectively）<br>提升层次（修改阶段）：优雅、时尚（elegant, stylish）</p>
 <h2 id="如何写好文章"><a href="#如何写好文章" class="headerlink" title="如何写好文章"></a>如何写好文章</h2><p>整体上：</p>
@@ -265,8 +265,8 @@
 </ul>
 </li>
 <li><strong>strength and limitations</strong>：预测读者可能的质疑并作出回应，解释研究的稳健性。</li>
-<li><strong>what’s the next</strong>：指出为解决的问题和未来的方向。</li>
-<li><strong>implicate/speculate/recommend</strong>：指出被研究的意义。</li>
+<li><strong>what’s the next</strong>：指出未解决的问题和未来的方向。</li>
+<li><strong>implicate/speculate/recommend</strong>：讨论本研究的意义。</li>
 <li><strong>strong conclusion</strong>: 再次强调本研究的亮点。</li>
 </ol>
 <h3 id="Tips-3"><a href="#Tips-3" class="headerlink" title="Tips"></a>Tips</h3><ul>
@@ -286,6 +286,39 @@
 <li>研究意义/建议</li>
 </ol>
 <p>每个部分用一两句话总结凝练，不要超过字数要求。</p>
+<h1 id="其他问题：学术规范-权益-投稿"><a href="#其他问题：学术规范-权益-投稿" class="headerlink" title="其他问题：学术规范/权益/投稿"></a>其他问题：学术规范/权益/投稿</h1><h2 id="剽窃"><a href="#剽窃" class="headerlink" title="剽窃"></a>剽窃</h2><p>剽窃/抄袭是学术不端行为，包括复制、稍微修改别人的论文，以及抄袭网站内容等。<br>为了避免抄袭，在引用别人的工作时，要注意以下几点：</p>
+<ul>
+<li>必须完全理解别人的结果</li>
+<li>按照自己的理解，陈述别人的工作并标注引用</li>
+<li>避免直接复制别人的文字</li>
+</ul>
+<p>最后要注意自我抄袭/复制问题，这与抄袭别人是相同性质，而且出现几率不低。主要表现形式有一个研究结果写多篇文章和一稿多投。</p>
+<h2 id="论文作者-致谢"><a href="#论文作者-致谢" class="headerlink" title="论文作者/致谢"></a>论文作者/致谢</h2><p>论文作者应该对论文的内容承担责任。因此，只有对论文内容有贡献且熟悉论文，并能够为此承担责任的人才能作为论文作者。<br>论文的作者顺序应该按照论文贡献程度确定，一般为：第一位为论文工作的主要完成人；最后一位为研究组的负责人；中间的作者按照贡献排列；对于一些组织合作项目，可以将组织名称作为作者名。<br>致谢部分首先要致谢研究资助来源，然后致谢对研究有贡献但没有成为论文作者的人。</p>
+<h2 id="投稿过程"><a href="#投稿过程" class="headerlink" title="投稿过程"></a>投稿过程</h2><p>完成论文写作后，要开始进行投稿。投稿前先要确定目标期刊，根据自己的研究领域和研究结果的重要程度，选择合适的期刊进行投稿。确定好目标期刊后，进入网站根据指引完成相关注册，根据手稿格式要求提交手稿。此外，还需要根据要求提交所有作者的版权声明。<br>投稿的结局一般有4种：</p>
+<ol>
+<li>Accepted: 接受，恭喜你一次通过！</li>
+<li>Accepted pending minor revisions: 小修，同样恭喜你，只需要根据反馈稍微修改。</li>
+<li>Rejected but re-submission possible (revision/re-submit): 拒绝，但不要灰心，如果按照编辑/审稿人建议修改论文后，还有机会重新投稿。</li>
+<li>Rejected and no re-submission possible: 凉了，根据反馈反思一下自己的论文，准备换期刊投稿。</li>
+</ol>
+<p>第3种结局应该是经常遇到的，虽然被拒绝了，但是还有重新投稿并被录用的可能，所以不要气馁，认真审阅审稿人的意见并作出修改。除了修改论文，再次投稿的时候还需要提交一封cover letter. Cover letter的写作要注意以下几点：</p>
+<ul>
+<li>礼貌回应</li>
+<li>要克制被怼的情绪，即使审稿人搞错了，也要耐心解释</li>
+<li>逐点回应</li>
+<li>认真思考审稿人的意见，提升论文水平</li>
+</ul>
+<p>cover letter的一般写法：</p>
+<blockquote>
+<p>Dear Dr. Editor,<br>We appreciate your helpful comments and those of the reviewers. We feel that the manuscript is now greatly improved.<br>We have made revisions based on the comments/suggestions of Reviewers 1 and 2. The comments of each reviewer are numbered below, with our response (clarifications and changes) following.<br>Reviewer 1:<br>(1)comments…<br>    response…<br>(2)…<br>…</p>
+</blockquote>
+<p>论文被接受后，将会进行final proof校对，这是出版前的最后校对，一定要仔细查看各种细节。</p>
+<h2 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h2><p>搞好写作很重要！</p>
+<blockquote>
+<p>About 60% of reviewers criticisms pertain to the quality of the writing or tables and graphs; and about 40% pertain to the quality of the scientific work.</p>
+</blockquote>
+<p>最后，感谢 <a href="https://med.stanford.edu/" target="_blank" rel="noopener">斯坦福大学医学院</a> 和 <a href="http://www.aimieditor.com.cn/" target="_blank" rel="noopener">埃米编辑</a> 提供的课程视频！</p>
+<p>（2020.4.11完）</p>
 ]]></content>
       <categories>
         <category>Learning</category>
