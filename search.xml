@@ -1,6 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>科学写作中的矢量图</title>
+    <url>/2020/05/12/vector-graph/</url>
+    <content><![CDATA[<h1 id="位图和矢量图"><a href="#位图和矢量图" class="headerlink" title="位图和矢量图"></a>位图和矢量图</h1><p>位图，亦称为点阵图像或栅格图像，是由像素点组成的。放大后会失真，与分辨率有关。常见的位图格式有jepg,png等。常用的位图处理工具有Adobe Photoshop。<br>矢量图，也称为面向对象的图像或绘图图像，在数学上定义为一系列由线连接的点。它的特点是放大后图像不会失真，和分辨率无关，适用于图形设计、文字设计和一些标志设计、版式设计等。矢量图的常见格式有ico,bw,svg,mwf/emf(微软windows适用),eps(用PostScript语言描述),ai(Adobe Illustrator)等。常用的矢量图处理工具有Adobe Illustrator。</p>
+<h1 id="科学写作中的矢量图"><a href="#科学写作中的矢量图" class="headerlink" title="科学写作中的矢量图"></a>科学写作中的矢量图</h1><p>在科学写作中，除了影像类图片用位图展示，其他的展示数据的图和流程图都可以用位图展示。位图的特点是放大不会失真，占用空间相对小，能够准确清晰的展示科学实验结果。下面介绍如何产生以及插入文档编辑软件MS Word中。</p>
+<h2 id="矢量图的绘制"><a href="#矢量图的绘制" class="headerlink" title="矢量图的绘制"></a>矢量图的绘制</h2><p>对于展示数据的图片，如散点图/柱状图/折线图等，一般由程序生成，下面介绍Python和R中如何保存矢量图片。对于流程图，一般可以通过矢量图绘制软件如Ai，MS Powerpoint,进行绘制并保存为矢量图片格式。</p>
+<h3 id="Python-保存矢量图"><a href="#Python-保存矢量图" class="headerlink" title="Python 保存矢量图"></a>Python 保存矢量图</h3><p>Ref: <a href="https://blog.csdn.net/Poul_henry/article/details/88294297" target="_blank" rel="noopener">Python_matplotlib保存矢量图</a></p>
+<h3 id="R-保存矢量图"><a href="#R-保存矢量图" class="headerlink" title="R 保存矢量图"></a>R 保存矢量图</h3><p>Ref: <a href="https://blog.csdn.net/weixin_41929524/article/details/100152389" target="_blank" rel="noopener">R 语言储存矢量图</a></p>
+<h2 id="MS-Word-插入矢量图"><a href="#MS-Word-插入矢量图" class="headerlink" title="MS Word 插入矢量图"></a>MS Word 插入矢量图</h2><p>MS Word仅支持mwf/emf格式的矢量图插入，而Python/R无法直接导出这种格式的图像，因此需要用软件进行格式转化，如Ai。Python/R都可以生成eps格式的图像，导入Ai中，导出为emf格式。</p>
+]]></content>
+      <categories>
+        <category>Note</category>
+      </categories>
+      <tags>
+        <tag>矢量图</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Excel数据处理</title>
+    <url>/2020/04/12/excel-learning/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Learning</category>
+      </categories>
+      <tags>
+        <tag>Excel</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>斯坦福大学医学院科学写作课程笔记</title>
     <url>/2020/03/30/scientific-writing/</url>
     <content><![CDATA[<h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><h2 id="好文笔的标准"><a href="#好文笔的标准" class="headerlink" title="好文笔的标准"></a>好文笔的标准</h2><p>基础层次（初稿阶段）：清楚、有效（clearly, effectively）<br>提升层次（修改阶段）：优雅、时尚（elegant, stylish）</p>
