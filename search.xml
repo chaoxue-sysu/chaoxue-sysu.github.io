@@ -1,6 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>使用代理访问数据资源</title>
+    <url>/2020/10/01/%E4%BD%BF%E7%94%A8%E4%BB%A3%E7%90%86%E8%AE%BF%E9%97%AE%E6%95%B0%E6%8D%AE%E8%B5%84%E6%BA%90/</url>
+    <content><![CDATA[<h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>在工作学习中，有时候需要从互联网获取数据资源，但是由于各种原因，可能无法直接在本地的网络直接获取到这些资源。一种常用的解决方案就是通过代理进行获取，本文主要讲述使用代理获取网络资源的通俗原理和方法。</p>
+<h1 id="代理概述"><a href="#代理概述" class="headerlink" title="代理概述"></a>代理概述</h1><p>在网络中，代理（Proxy）就是指客户端通过代理服务器访问目标服务端的过程。代理服务器在实际应用中发挥着极其重要的作用，它可用于多个目的，最基本的功能是连接，此外还包括安全性、缓存、内容过滤、访问控制管理等功能【<a href="https://baike.baidu.com/item/%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8/97996?fr=aladdin" target="_blank" rel="noopener">代理服务器-百科</a> 】。那么在这里，我们使用代理的主要目的则是为了提升数据资源获取效率。</p>
+<p>从代理服务器工作的层次的角度来说可以分为应用层代理（如http代理）、传输层代理和SOCKS代理。SOCKS代理采用socks协议，是一种通用的代理服务器，目前有两个版本的Socks协议，socks4和socks5。socks不要求应用程序遵循特定的操作系统平台，socks代理与应用层代理不同，socks代理只是简单地传递数据包，而不必关心是何种应用协议【<a href="https://www.zhihu.com/question/386146847" target="_blank" rel="noopener">socks5和http代理的区别</a> 】。而http代理只能在http协议下进行代理服务，主要用于网页数据资源访问。</p>
+<h1 id="代理实现"><a href="#代理实现" class="headerlink" title="代理实现"></a>代理实现</h1><h2 id="代理服务器和配置"><a href="#代理服务器和配置" class="headerlink" title="代理服务器和配置"></a>代理服务器和配置</h2><p>要实现代理，首先需要一台代理服务器。本文的需求是，通过代理去获取正常情况下无法获取或者获取效率低的网络资源。那么，我们对代理服务器的要求就是，客户端能够高速连接代理服务器，服务器也能够高速连接目标服务端。这样才能保证我们通过代理高效获取目标服务端的数据资源。代理服务器一般从各云服务器厂商购买，比如国内的阿里云、腾讯云、百度云等，国外的VULTR、AWS等。</p>
+<p>有了服务器之后，就需要在服务器上搭建代理环境，比如通过ShadowSocks和V2ray（推荐）。V2ray服务器端部署和客户端（支持多种平台）使用教程：<a href="https://m1314.cn/341.html" target="_blank" rel="noopener">一键部署V2ray和客户端使用</a> 。</p>
+<h2 id="客户端使用"><a href="#客户端使用" class="headerlink" title="客户端使用"></a>客户端使用</h2><p>下载对应的客户端，输入服务器端的配置信息即可。还是以V2ray为例进行说明。 对于Windows/MacOS/Andriod等有图形界面的V2ray客户端，输入配置文件后，就会同时产生socks5代理和http代理。而对于linux，v2ray只有socks5代理，需要通过Privoxy软件转发得到http代理（<a href="https://blog.csdn.net/zhifeng172/article/details/89221839" target="_blank" rel="noopener">教程1</a> ，<a href="https://blog.csdn.net/lch1251680944/article/details/87975532" target="_blank" rel="noopener">教程2</a> ）。</p>
+<p>一般情况下，我们要获取的数据资源一般以http协议或ftp协议传输，如果是http协议，使用http代理即可下载，如果是ftp协议，则要用socks代理。下面介绍windows，linux平台以及使用python通过V2ray代理下载http协议和ftp协议数据的方法。</p>
+<h3 id="Windows-平台"><a href="#Windows-平台" class="headerlink" title="Windows 平台"></a>Windows 平台</h3><ol>
+<li>http协议：直接浏览器下载。</li>
+<li>ftp协议：使用支持socks5代理的ftp客户端（如Filezilla）下载。（Filezilla使用代理下载数据教程：【编辑】-【设置】-【通用代理】，选中socks5，填入代理配置：默认地址：127.0.0.1，端口2333）。</li>
+</ol>
+<h3 id="Linux-平台"><a href="#Linux-平台" class="headerlink" title="Linux 平台"></a>Linux 平台</h3><p>无论是http协议还是ftp协议，都可以通过curl来下载，curl使用socks5代理的方法：</p>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">curl -O --socks5-hostname <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">2333</span> &lt;URL&gt;</span><br></pre></td></tr></table></figure>
+<p>wget不支持socks5协议，无法通过代理下载ftp资源，不推荐。curl和wget使用和区别：<a href="https://blog.csdn.net/gubenpeiyuan/article/details/50803095" target="_blank" rel="noopener">curl教程</a>， <a href="https://blog.csdn.net/gubenpeiyuan/article/details/50803095" target="_blank" rel="noopener">区别</a> 。</p>
+<h3 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h3><p>使用Python下载，可以设置全局socks5代理，同样可以支持ftp和http协议。python设置全局socks5代理代码：</p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">import socket</span><br><span class="line">import socks</span><br><span class="line"></span><br><span class="line">SOCKS5_PROXY_HOST = <span class="string">'127.0.0.1'</span>		 #<span class="built_in"> socks </span>代理IP地址</span><br><span class="line">SOCKS5_PROXY_PORT = 2333           #<span class="built_in"> socks </span>代理本地端口</span><br><span class="line">socks.set_default_proxy(socks.SOCKS5, SOCKS5_PROXY_HOST, SOCKS5_PROXY_PORT)</span><br><span class="line">socket.socket = socks.socksocket</span><br></pre></td></tr></table></figure>
+<p>环境Python3.6，依赖包：PySocks</p>
+]]></content>
+      <categories>
+        <category>Note</category>
+      </categories>
+      <tags>
+        <tag>代理</tag>
+        <tag>socks5</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>genetics_base</title>
+    <url>/2020/06/13/genetics-base/</url>
+    <content><![CDATA[<h1 id="遗传学与分子生物学基础"><a href="#遗传学与分子生物学基础" class="headerlink" title="遗传学与分子生物学基础"></a>遗传学与分子生物学基础</h1><h4 id="关于DNA复制、转录和翻译方向问题："><a href="#关于DNA复制、转录和翻译方向问题：" class="headerlink" title="关于DNA复制、转录和翻译方向问题："></a>关于DNA复制、转录和翻译方向问题：</h4><ol>
+<li>（脱氧）核酸的合成方向都是3’ -&gt; 5’，这是因为核苷酸合成时是3’C上的羟基和5’C上磷酸基团的脱水结合，而且是5’磷酸基团向3’羟基结合以致核酸链不断延伸。所以DNA复制和转录过程都是沿着模板链的5’ -&gt; 3’方向，子链生成方向是3’ -&gt; 5’。</li>
+<li>翻译方向是沿着mRNA的5’ -&gt; 3’方向进行的。（注意ji’yin与核酸延伸方向不同，因为翻译本质也不是核酸延伸）。</li>
+<li>正义链（+）和负义链（-）：正义链是与转录的RNA序列和方向一致的链，负义链则是对应的模板链。</li>
+<li>基因的正负链：要注意正负链都会进行转录，所以基因也有正负链属性，尤其是在提取基因的序列和基因翻译蛋白质产物时要注意正负链，因为正负链的转录和翻译方向也会相反。</li>
+</ol>
+]]></content>
+  </entry>
+  <entry>
     <title>科学写作中的矢量图</title>
     <url>/2020/05/12/vector-graph/</url>
     <content><![CDATA[<h1 id="位图和矢量图"><a href="#位图和矢量图" class="headerlink" title="位图和矢量图"></a>位图和矢量图</h1><p>位图，亦称为点阵图像或栅格图像，是由像素点组成的。放大后会失真，与分辨率有关。常见的位图格式有jpg,png等。常用的位图处理工具有Adobe Photoshop。<br>矢量图，也称为面向对象的图像或绘图图像，在数学上定义为一系列由线连接的点。它的特点是放大后图像不会失真，和分辨率无关，适用于图形设计、文字设计和一些标志设计、版式设计等。矢量图的常见格式有ico,bw,svg,mwf/emf(微软windows适用),eps(用PostScript语言描述),ai(Adobe Illustrator)等。常用的矢量图处理工具有Adobe Illustrator。</p>
@@ -372,6 +412,7 @@
 <li>基于1的规范，提出实现调用项目中任意模块中对象的方法。在根目录下创建<code>__main__.py</code>，<br>在该程序中引入要调用的模块，并执行。然后就可以在系统中，通过<code>python -m hpc</code>来执行该程序。<br><code>python -m hpc</code>的意思为在<code>sys.path</code>中搜索包hpc来执行。<br>因此，若没有在系统中添加hpc项目父路径到<code>sys.path</code>，则需要切换到hpc所在父目录，执行。<br>（因为<code>sys.path</code>含有当前目录）。</li>
 <li>在Pycharm中，默认会把项目根加入<code>sys.path</code>，所以导致使用<code>hpc.util.network</code>会提示书写错误，<br>我们可以在项目根目录上再加一层目录即可解决问题。</li>
 </ol>
+<h2 id="Python递归程序中的返回值问题"><a href="#Python递归程序中的返回值问题" class="headerlink" title="Python递归程序中的返回值问题"></a>Python递归程序中的返回值问题</h2><p>要注意递归程序的返回值会产生n次，n为递归程序调用的次数，而程序的最终返回值为递归程序最后一次执行时的返回值。递归程序的执行次序参考图。<br><strong>Ref</strong>: <a href="https://blog.csdn.net/weixin_40476348/article/details/98602498" target="_blank" rel="noopener">https://blog.csdn.net/weixin_40476348/article/details/98602498</a></p>
 ]]></content>
       <categories>
         <category>Learning</category>
