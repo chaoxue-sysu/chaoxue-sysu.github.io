@@ -7,5 +7,5 @@ xxx
 示例命令：xxx
 
 <video width="320" height="240" controls> 
-  <source src="https://www.runoob.com/try/demo_source/movie.mp4" type="video/mp4"> 
+  <source src="https://pmglab.top/tmp/kggsee_demo.mp4" type="video/mp4"> 
 </video>
